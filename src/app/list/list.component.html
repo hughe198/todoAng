@@ -1,0 +1,13 @@
+<div *ngIf ="todos && todos.length; else noTodosTemplate">
+<ng-container *ngFor="let todo of todos">
+    <div>
+        <p>{{todo.title}}</p>
+    </div>
+
+
+</ng-container>
+</div>
+
+<ng-template #noTodosTemplate>
+    <p>No todos yet</p>
+</ng-template> 
