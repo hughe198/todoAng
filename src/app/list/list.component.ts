@@ -5,11 +5,13 @@ import { Item } from '../../item';
 import { TodoServiceModule } from '../todo-service/todo-service.module';
 import { HttpClientModule } from '@angular/common/http';
 import { Subscription } from 'rxjs';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faDeleteLeft, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [HttpClientModule,TodoServiceModule, CommonModule, ReactiveFormsModule],
+  imports: [FontAwesomeModule,HttpClientModule,TodoServiceModule, CommonModule, ReactiveFormsModule],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css'
 })
@@ -20,6 +22,8 @@ export class ListComponent implements OnInit {
   title:new FormControl(''),
   description: new FormControl('')
  })
+
+ faDelete =faXmark;
 
   constructor(private todoService:TodoServiceModule){
   }
@@ -38,6 +42,7 @@ export class ListComponent implements OnInit {
       completed:false}
     if (this.itemForm.valid){
       this.todoService.postTodo(newItem)
+      this.itemForm.reset()
       }
 
   }
