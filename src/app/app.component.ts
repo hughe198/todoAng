@@ -1,13 +1,11 @@
-import { Component, importProvidersFrom } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { ListComponent} from './list/list.component'; 
-import { ItemComponent } from './list/item/item.component';
 import { HttpClientModule } from '@angular/common/http';
-import { TodoServiceModule } from './todo-service/todo-service.module';
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { ListComponent } from './list/list.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ListComponent,ItemComponent, HttpClientModule],
+  imports: [RouterOutlet, ListComponent, HttpClientModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

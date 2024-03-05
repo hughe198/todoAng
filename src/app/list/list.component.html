@@ -1,13 +1,31 @@
-<div *ngIf ="todos && todos.length; else noTodosTemplate">
-<ng-container *ngFor="let todo of todos">
-    <div>
-        <p>{{todo.title}}</p>
+<form [formGroup] ="itemForm" (ngSubmit)="onSubmit()" class="w-25">
+    <div class ="form-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" formControlName = "title" class = "form-control">    
+    </div>
+    
+    <div class ="form-group">
+        <label for="description">Description</label>
+        <input type="text" id="description" formControlName = "description" class = "form-control">    
     </div>
 
+    <button type = "submit" class = "btn btn-primary">Save</button>
+</form>
 
-</ng-container>
+
+<div *ngIf="todos && todos.length; else noTodosTemplate" class="w-25">
+    <ng-container *ngFor="let todo of todos" >
+        <div class="card" id="item">
+            <div class ="card-title">
+                <p>{{todo.title}}</p>
+            </div>
+            <div class="card-body">
+                <p>{{todo.description}}</p>
+            </div>
+        </div>
+    </ng-container>
 </div>
 
 <ng-template #noTodosTemplate>
     <p>No todos yet</p>
-</ng-template> 
+</ng-template>
