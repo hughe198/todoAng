@@ -49,7 +49,12 @@ export class TodoServiceModule {
   }
   
   deleteTodo(todo:Item):Observable<any>{
-    return this.http.delete(`${this.baseUrl}/todos/${todo.id}`)
+    return this.http.delete(`${this.baseUrl}/todos/${todo.id}`).pipe(
+      tap(()=>{
+        const updateTodos = this.todoSubject.getValue().filter(item => item.id !== todo.id)
+        this.todoSubject.next(updateTodos)
+      })
+    )
   }
   
   getTodo(item_id:string):void{

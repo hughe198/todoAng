@@ -28,11 +28,7 @@ export class ListComponent implements OnInit {
   constructor(private todoService:TodoServiceModule){
   }
   ngOnInit(): void {
-    this.subscription.add(this.todoService.todo$.subscribe((todos:Item[])=>{
-      this.todos = todos
-      console.log(this.todos)
-
-    }))
+    this.todoService.todo$.subscribe(todos => this.todos = todos)
     this.todoService.getTodos()
 
   }
@@ -46,6 +42,13 @@ export class ListComponent implements OnInit {
       }
 
   }
+
+  onDelete(item:Item):void{
+    this.todoService.deleteTodo(item).subscribe(()=>{
+      console.log(`Deleted todo with id ${item.id}`)
+    })
+  }
+
 
   ngOnDestroy(): void {
     // Unsubscribe to ensure no memory leaks
