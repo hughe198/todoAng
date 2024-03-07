@@ -15,7 +15,7 @@ import { Item } from '../../item';
 })
 
 export class TodoServiceModule {
-  private baseUrl = "http://127.0.0.1:8000"
+  private baseUrl = "https://todo-app-jauk.onrender.com"
   private todoSubject  = new BehaviorSubject<Item[]>([]);
   public todo$ = this.todoSubject.asObservable();
 
