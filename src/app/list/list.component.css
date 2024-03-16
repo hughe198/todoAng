@@ -2,3 +2,20 @@
     margin-top: -20px;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+
+.cards-grid-container {
+    column-count: 1; /* Default to 1 column for smaller screens */
+    column-gap: 1rem;
+    break-inside: avoid; /* Prevent cards from splitting across columns */
+    margin-bottom: 1rem; /* Space between cards */
+}
+
+
+
+
+

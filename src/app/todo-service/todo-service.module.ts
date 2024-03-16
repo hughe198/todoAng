@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable, catchError, throwError, BehaviorSubject, tap } from 'rxjs';
 import { Item } from '../../item';
-
+import { environment } from '../../environments/environment';
 
 @NgModule({
   declarations: [],
@@ -15,7 +15,7 @@ import { Item } from '../../item';
 })
 
 export class TodoServiceModule {
-  private baseUrl = "https://todo-app-jauk.onrender.com"
+  private baseUrl = environment.apiUrl    
   private todoSubject  = new BehaviorSubject<Item[]>([]);
   public todo$ = this.todoSubject.asObservable();
 
